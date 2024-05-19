@@ -1,7 +1,7 @@
 format_version: 10
 pipelines:
   ansible-app-deployment:
-    group: App-Deployments
+    group: Templates
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
