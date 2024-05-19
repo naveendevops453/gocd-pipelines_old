@@ -7,7 +7,7 @@ pipelines:
     display_order: -1
     materials:
       git-795c8d6:
-        git: https://github.com/naveendevops453/expense-ansible
+        git: https://github.com/naveendevops453/expense-anisble.git
         shallow_clone: true
         auto_update: true
         branch: main
