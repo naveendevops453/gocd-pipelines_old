@@ -17,7 +17,7 @@ pipelines:
           approval:
             type: manual
           jobs:
-            test-j:
+            ansible:
               timeout: 0
               tasks:
                 - exec:
@@ -39,7 +39,7 @@ pipelines:
           approval:
             type: manual
           jobs:
-            test-j:
+            ansible:
               timeout: 0
               tasks:
                 - exec:
@@ -53,7 +53,7 @@ pipelines:
           approval:
             type: manual
           jobs:
-            test-j:
+            ansible:
               timeout: 0
               tasks:
                 - exec:
@@ -67,7 +67,7 @@ pipelines:
           approval:
             type: manual
           jobs:
-            test-j:
+            ansible:
               timeout: 0
               tasks:
                 - exec:
