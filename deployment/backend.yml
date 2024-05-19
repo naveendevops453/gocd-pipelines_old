@@ -22,10 +22,18 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                      - -l
-                    command: ls
-
-
+                      - -i
+                      - backend-dev.devopsengineer.online
+                      - -e
+                      - ansible_user=ec2-user
+                      - -e
+                      - ansible_password=DevOps321
+                      - -e
+                      - env=dev
+                      - -e
+                      - role_name=backend
+                      - expense.yml
+                    command: ansible-playbook
       - QA:
           fetch_materials: true
           approval:
@@ -64,6 +72,16 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                      - -l
-                    command: ls
+                      - -i
+                      - backend-dev.devopsengineer.online
+                      - -e
+                      - ansible_user=ec2-user
+                      - -e
+                      - ansible_password=DevOps321
+                      - -e
+                      - env=prod
+                      - -e
+                      - role_name=backend
+                      - expense.yml
+                    command: ansible-playbook
                     run_if: passed
