@@ -11,9 +11,15 @@ pipelines:
         shallow_clone: true
         auto_update: true
         branch: main
+    secure_variables:
+      SSH_PASSWORD: "AES:6Orrfh48+lWMeRnsRVPYrw==:vZndmG9aRtSHa8pmFOEZEA=="
+    environment_variables:
+      component: backend
     stages:
       - DEV:
           fetch_materials: true
+          environment_variables:
+            env: dev
           approval:
             type: manual
           jobs:
@@ -22,18 +28,8 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                      - -i
-                      - backend-dev.devopsengineer.online
-                      - -e
-                      - ansible_user=ec2-user
-                      - -e
-                      - ansible_password=DevOps321
-                      - -e
-                      - env=dev
-                      - -e
-                      - role_name=backend
-                      - expense.yml
-                    command: ansible-playbook
+                      - run.sh
+                    command: bash
       - QA:
           fetch_materials: true
           approval:
@@ -64,6 +60,8 @@ pipelines:
 
       - PROD:
           fetch_materials: true
+          environment_variables:
+            env: dev
           approval:
             type: manual
           jobs:
@@ -72,16 +70,6 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                      - -i
-                      - backend-dev.devopsengineer.online
-                      - -e
-                      - ansible_user=ec2-user
-                      - -e
-                      - ansible_password=DevOps321
-                      - -e
-                      - env=prod
-                      - -e
-                      - role_name=backend
-                      - expense.yml
-                    command: ansible-playbook
+                      - run.sh
+                    command: bash
                     run_if: passed
