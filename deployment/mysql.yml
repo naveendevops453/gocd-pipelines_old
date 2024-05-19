@@ -1,0 +1,87 @@
+format_version: 10
+pipelines:
+  mysql:
+    group: App-Deployments
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-795c8d6:
+        git: https://github.com/naveendevops453/expense-anisble.git
+        shallow_clone: true
+        auto_update: true
+        branch: main
+    stages:
+      - DEV:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            test-j:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -i
+                      - mysql-dev.devopsengineer.online
+                      - -e
+                      - ansible_user=ec2-user
+                      - -e
+                      - ansible_password=DevOps321
+                      - -e
+                      - env=dev
+                      - -e
+                      - role_name=mysql
+                      - expense.yml
+                    command: ansible-playbook
+      - QA:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            test-j:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -l
+                    command: ls
+                    run_if: passed
+
+      - STAGE:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            test-j:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -l
+                    command: ls
+                    run_if: passed
+
+      - PROD:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            test-j:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -i
+                      - mysql-dev.devopsengineer.online
+                      - -e
+                      - ansible_user=ec2-user
+                      - -e
+                      - ansible_password=DevOps321
+                      - -e
+                      - env=prod
+                      - -e
+                      - role_name=mysql
+                      - expense.yml
+                    command: ansible-playbook
+                    run_if: passed
