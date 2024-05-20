@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  expense-frontend:
+  expense-mysql:
     group: ansibleGroup
     label_template: ${COUNT}
     materials:
@@ -24,6 +24,6 @@ pipelines:
                 - exec:
                     arguments:
                       - run.sh
-                      - frontend
+                      - mysql
                     command: bash #bash ansible.sh frontend
                     run_if: passed
