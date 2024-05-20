@@ -6,13 +6,13 @@ pipelines:
     lock_behavior: none
     display_order: -1
     materials:
-      git-795c8d6:
+      git-a66247d:
         git: https://github.com/naveendevops453/expense-anisble.git
         shallow_clone: true
         auto_update: true
         branch: main
     secure_variables:
-      SSH_PASSWORD: "AES:6Orrfh48+lWMeRnsRVPYrw==:vZndmG9aRtSHa8pmFOEZEA=="
+      SSH_PASSWORD: "AES:g+WiSTADHzb1VO5WZzjYTg==:w1HwOTwfYWZ3RYwbTZEBjA=="
     environment_variables:
       component: mysql
     template: ansible-app-deployment

@@ -6,7 +6,7 @@ pipelines:
     lock_behavior: none
     display_order: -1
     materials:
-      git-795c8d6:
+      git-a66247d:
         git: https://github.com/naveendevops453/expense-anisble.git
         shallow_clone: true
         auto_update: true
